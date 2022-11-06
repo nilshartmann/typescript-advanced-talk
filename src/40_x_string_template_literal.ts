@@ -27,7 +27,7 @@ const setCity: SetterFunctions = "setCity"; // ERROR
 //
 //   Für einen gegebenen Typen soll ein "Builder-Typ" gebaut werden
 //    - für alle Eigenschaften set-Funktion
-// .  - eine Build-Funktion, die den Original-Typen read-only zurückliefert
+//    - eine Build-Funktion, die den Original-Typen read-only zurückliefert
 
 type Setter<Type> = {
   // "as" ist hier ein Typecast 🤯
