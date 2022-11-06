@@ -1,0 +1,16 @@
+// Place your settings in this file to overwrite default and user settings.
+{
+  "editor.suggest.showSnippets": false,
+  "editor.fontLigatures": false,
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    "**/Thumbs.db": true,
+    "**/node_modules": true,
+    "**/*.pdf": true,
+    "**/*.pptx": true
+  }
+}
