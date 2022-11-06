@@ -13,3 +13,5 @@ const path = "/api/v1/:userId/likes/:likeId";
 const r = parsePath(path);
 r.likeId; // OK
 r.personId; // ERROR
+
+// --- Hilfstypen -------------------------------------

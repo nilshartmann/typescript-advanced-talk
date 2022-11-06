@@ -1,3 +1,5 @@
+import { ToObject, ToUnion } from "./util-types";
+
 export default undefined;
 
 type IsArg<A extends string> = A extends `:${infer ARG}` ? ARG : never;
@@ -9,15 +11,9 @@ type Segments<
   ? Segments<R, [...RESULT, IsArg<L>]>
   : [...RESULT, IsArg<URL>];
 
-type ToUnion<P extends any[]> = P[number];
-
-type PathArgs<P extends string> = ToUnion<Segments<P>>;
-
-type ToObject<X extends string> = {
-  [Key in X]: string;
-};
-
-declare function parsePath<S extends string>(path: S): ToObject<PathArgs<S>>;
+declare function parsePath<S extends string>(
+  path: S
+): ToObject<ToUnion<Segments<S>>>;
 
 const path = "/api/v1/:userId/likes/:likeId";
 
