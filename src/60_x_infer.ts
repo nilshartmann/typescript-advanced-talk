@@ -17,9 +17,9 @@ type Segments<
   ? Segments<R, [...RESULT, IsArg<L>]>
   : [...RESULT, IsArg<URL>];
 
-declare function parseUrl<S extends string>(
-  path: S
-): ToObject<ToUnion<Segments<S>>>;
+type UrlArgs<URL extends string> = ToObject<ToUnion<Segments<URL>>>;
+
+declare function parseUrl<S extends string>(path: S): UrlArgs<S>;
 
 const path = "/api/v1/:userId/likes/:likeId";
 
@@ -27,3 +27,20 @@ const r = parseUrl(path);
 r.likeId; // OK
 r.userId.toLowerCase(); // OK
 r.personId; // ERROR Property 'personId' does not exist
+
+// Schritt 2:
+// - Eine 'requestHandleFunction', die zwei Parameter hat:
+//    - URL
+//    - handler-Callback-Funktion
+//      Die Handler-Funktion bekommt die geparsten Argumente typsicher übergbeen
+type RequestHandleFn<URL extends string> = (args: UrlArgs<URL>) => void;
+declare function onGetRequest<URL extends string>(
+  url: URL,
+  handle: RequestHandleFn<URL>
+): any;
+
+onGetRequest(path, (args) => {
+  args.likeId; // OK
+  args.userId.toLowerCase(); // OK
+  args.personId; // ERROR Property 'personId' does not exist
+});

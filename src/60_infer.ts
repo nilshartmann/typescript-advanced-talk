@@ -19,4 +19,11 @@ declare function parseUrl<S extends string>(url: S): any;
 
 const r = parseUrl(path);
 r.likeId; // OK
+r.userId.toLowerCase(); // OK
 r.personId; // ERROR
+
+// Schritt 2:
+// - Eine 'requestHandleFunction', die zwei Parameter hat:
+//    - URL
+//    - handler-Callback-Funktion
+//      Die Handler-Funktion bekommt die geparsten Argumente typsicher übergbeen
