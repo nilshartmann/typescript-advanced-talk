@@ -3,8 +3,6 @@ export default undefined;
 // Beispiel 1: String Template Literal
 //
 //             A) Ein Typ, der den Namen einer Setter-Funktion zurückliefert
-//             B) Ein Typ, der die Liste aller Setter-Funktionen zurückliefert f
-//                 für Person zurückliefert
 //
 
 type Person = {
