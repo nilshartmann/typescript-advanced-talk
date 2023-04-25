@@ -11,7 +11,7 @@ declare function reverse<S extends string | null>(
 const l = reverse("Hallo").toUpperCase(); // OK
 const x = reverse(null).toUpperCase(); // ERROR: object possibly null
 
-// Beispiel: was macht eigentlich 'Extract' im vorherigen Beispiel?
+// Der Never Typ...
 
 type AllowedValues = string | boolean | number;
 

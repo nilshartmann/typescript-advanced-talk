@@ -31,7 +31,7 @@ const setCity: SetterFunctions = "setCity"; // ERROR
 
 type Setter<Type> = {
   // "as" ist hier ein Typecast 🤯
-  [key in Extract<keyof Type, string> as SetterFunctionName<key>]: (
+  [key in keyof Type & string as SetterFunctionName<key>]: (
     newValue: Type[key]
   ) => Builder<Type>;
 };
