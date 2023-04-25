@@ -1,10 +1,14 @@
 # TypeScript: fortgeschrittene Typen und Konzepte
 
-Code-Beispiele zu meinem [W-JAX Talk](https://jax.de/web-development-javascript/typescript-fortgeschrittene-typen-und-konzepte/) vom 8.11.2022
+Code-Beispiele zu meinem Talks zu TypeScript
+
+## Installation
+
+Im Root-Verzeichnis mittels `pnpm install` (oder `npm install`) TypeScript installieren.
 
 ## Verwendung
 
-Im `src`-Verzeichnis findest Du jeweils zwei Dateien
+In `src`-Verzeichnissen findest Du jeweils zwei Dateien
 
 - `<schritt>_<dateiname>.ts` enthält den Ausgangscode eines Beispiels
 - `<schritt>_x_<dateiname>.ts` enthält jeweils das fertige Beispiel
