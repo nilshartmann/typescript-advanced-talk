@@ -10,6 +10,14 @@ const person = {
   sayHello() { }
 }
 
+// Das wollen wir dynamisch bauen:
+type PersonObservable = {
+  onFirstnameChange: ((cn: (newFirstname: string) => void) => void)
+  onAgeChange: ((cn: (newAge: number) => void) => void)
+  // sayHello nicht vorhanden
+}
+
+
 type SupportedPropertyTypes = string | number | boolean;
 
 type CallbackFn<V> = (newValue: V) => void
@@ -30,5 +38,8 @@ result.onAgeChange((newAge) => newAge > 3) // OK newAge number
 result.onFirstnameChange( (newFirstname) => newFirstname.toUpperCase()) // OK newFirstname string
 //                   ^? 
 
+
+// check:
+const r: PersonObservable = result; // OK
 
 

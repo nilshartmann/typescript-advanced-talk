@@ -18,7 +18,15 @@ const person = {
   sayHello() { }
 }
 
-const result = createObservable(person);
+// Das wollen wir dynamisch bauen:
+type PersonObservable = {
+  onFirstnameChange: ((cn: (newFirstname: string) => void) => void)
+  onAgeChange: ((cn: (newAge: number) => void) => void)
+  // sayHello nicht vorhanden
+}
+
+
+const result = createObservable(person) as PersonObservable;
 
 result.onAgeChange((newAge) => newAge > 3) // SOLL newAge number
 //                   ^? 
