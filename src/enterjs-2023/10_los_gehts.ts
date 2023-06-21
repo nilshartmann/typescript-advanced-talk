@@ -8,7 +8,9 @@ export default undefined;
 //   Filtern der Property-Tpyen mit "SupportedPropertyTypes"
 //   Umbennen der Keys
 
-declare function createObservable<P extends object>(o: P): Observable<P>
+
+
+declare function createObservable<P extends object>(o: P): unknown
 
 const person = {
   firstname: "Klaus",
