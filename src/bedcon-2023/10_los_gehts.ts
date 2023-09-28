@@ -2,37 +2,39 @@ import { Flatten } from "./flatten";
 
 export default undefined;
 
-// mapped type: Kopie des Objektes, Index Access Operator
+// 
+// Schritt 1: "getPropertyFromPerson"
+//   mapped type: Kopie des Objektes, Index Access Operator
 //   CallbackFn als Rückgabe-Typ
 //   Conditional-Types mit getLength
 //   Filtern der Property-Tpyen mit "SupportedPropertyTypes"
 //   Umbennen der Keys
+//   Evtl. rausfiltern von eigenschaften, die nicht mit setXXX anfangen
 
+// Vorbereitung:
+// declare function getPropertyFromObject(o: any, p: any): any
 
-
-declare function createObservable(o: any): unknown
+// Das wollen wir machen:
+declare function createProxy(o: any): any
 
 const person = {
   firstname: "Klaus",
   age: 32,
-  sayHello() { }
+  setLastname(_: string)  {return true }
 }
 
-// Das wollen wir dynamisch bauen:
-type PersonObservable = {
-  onFirstnameChange: ((cn: (newFirstname: string) => void) => void)
-  onAgeChange: ((cn: (newAge: number) => void) => void)
-  // sayHello nicht vorhanden
+type PersonProxy = {
+  setFirstname: (newFirstname: string) => void,
+  setAge: (newAge: number) => void,
+  setLastname: (newLastName: string) => void 
 }
 
 
-const result = createObservable(person) as PersonObservable;
+const result = createProxy(person) as PersonProxy;
 
-result.onAgeChange((newAge) => newAge > 3) // SOLL newAge number
-//                   ^? 
-
-result.onFirstnameChange( (newFirstname) => newFirstname.toUpperCase()) // SOLL newFirstname string
-//                   ^? 
+result.setAge(32) // SOLL newAge number
+result.setFirstname("Klaus") // SOLL newFirstname string
+result.setLastname("Meier"); // SOLL: lastname 'string'
 
 
 
