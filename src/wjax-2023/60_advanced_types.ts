@@ -3,17 +3,17 @@ import { Flatten } from "./flatten";
 export default undefined;
 
 //
-//   - 3. Conditional Type: Wenn im Original eine Funktion, dann besondere Behandlung
-//       - Eigenes Beispiel Conditional-Types mit getLength
-//       - Bei Funktionen im Mapped Type String "FUNKTION" zurückgeben
-//    - 4. Condiontal Type mit Infer
-//    - 5. String Template Type
+//   - 3. String Template Type
 //       - am eigenen Beispiel
 //       - infer (am Beispiel Capitalize)
+//   - 4. Conditional Type: Wenn im Original eine Funktion, dann besondere Behandlung
+//       - Eigenes Beispiel Conditional-Types mit getLength
+//       - Bei Funktionen im Mapped Type String "FUNKTION" zurückgeben
+//   - 5. Condiontal Type mit Infer
 //
 
 // Das wollen wir machen:
-declare function createProxy(o: any): any;
+declare function createProxy(o: unknown): unknown;
 
 const person = {
   firstname: "Klaus",

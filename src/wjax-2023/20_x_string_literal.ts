@@ -1,18 +1,23 @@
 export default undefined;
 
-// Intro:
 //  - Werkzeuge für die nächsten Schritte:
-//   - typeof
-//    - Achtung! typeof gibt's in JavaScript und in TypeScript!
+//   - Union Type string
+//   - String vs. Value
+//
 //   - Index Access Operator (Beispiel: 'address' Company)
 
-// wie kommen wir an 'address'
-//
 
 declare function setRequestState(state: "loading" | "failed"): void;
 
 setRequestState("loading"); // OK
 setRequestState("failed"); // OK
+setRequestState("saving"); // ERR
+
+// Type vs Value
+type Loading = "Loading";
+const loading = Loading; // ERR
+
+// wie kommen wir an 'address'
 
 type Company = {
   name: string;

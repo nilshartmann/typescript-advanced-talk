@@ -1,7 +1,7 @@
 export default undefined;
 
-// - keyof
-//   - Default-Value
+//  - Generics #2
+//   - keyof
 //   - Constraints
 
 declare function getPropertyFromObject(object: unknown, key: unknown): unknown;

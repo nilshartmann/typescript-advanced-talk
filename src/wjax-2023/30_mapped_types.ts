@@ -6,4 +6,4 @@ export default undefined;
 //      - 1:1-Kopie des Objektes
 //      - Rückabe-Typ für alle "boolean"
 
-declare function validate(o: any): any;
+declare function validate(o: unknown): unknown;
