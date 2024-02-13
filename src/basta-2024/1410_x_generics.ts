@@ -10,4 +10,4 @@ export default undefined;
 
 type SetterFunction<S> = (newValue: S) => void;
 
-declare function setState<O>(o: O): [O, SetterFunction<O>];
+declare function useState<O>(o: O): [O, SetterFunction<O>];
