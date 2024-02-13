@@ -17,15 +17,20 @@ export default undefined;
 
 const path = "/api/v1/:userId/likes/:likeId";
 
-type ExpectedPathParams = {
-  userId: string;
-  likeId: string;
-};
+declare function getParams<URL extends string>(path: URL): unknown;
 
-declare function getParams(s: string): unknown;
+const result = getParams(path);
 
 // für Pfad "/api/v1/U1/likes/L1"
+// ...sollte das rauskommen:
+
 const expectedResult = {
   userId: "U1",
   likeId: "L1",
+};
+
+// ...und als Typ:
+type ExpectedPathParams = {
+  userId: string;
+  likeId: string;
 };
