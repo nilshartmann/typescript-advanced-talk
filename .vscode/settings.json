@@ -11,7 +11,7 @@
     "**/Thumbs.db": true,
     "**/node_modules": true,
     "**/*.pdf": true,
-    "**/*.pptx": true
+    "**/*.pptx": true,
   },
   "prettier.enable": false
 }

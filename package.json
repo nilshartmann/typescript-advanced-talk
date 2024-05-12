@@ -9,7 +9,9 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "typescript": "^5.1.3"
+    "type-testing": "^0.2.0",
+    "typescript": "^5.1.3",
+    "vitest": "^1.6.0"
   },
   "dependencies": {
     "zod": "^3.19.1"
