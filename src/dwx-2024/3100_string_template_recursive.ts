@@ -17,7 +17,9 @@ export default undefined;
 
 const path = "/api/v1/:userId/likes/:likeId";
 
-declare function getParams<URL extends string>(path: URL): unknown;
+type MakeParams<URL extends string> = unknown;
+
+declare function getParams<URL extends string>(path: URL): MakeParams<URL>;
 
 const result = getParams(path);
 
