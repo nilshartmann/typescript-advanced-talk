@@ -1,5 +1,6 @@
 import { Equal, Expect } from "type-testing";
 import { expectTypeOf } from "vitest";
+import { Flatten } from "./flatten";
 
 //
 // Schritte
@@ -13,15 +14,37 @@ import { expectTypeOf } from "vitest";
 //    Paramter gesetzt werden (nicht die Funktion)
 //  - (später: umbenennen der Keys)
 
-declare function createProxy<O extends object>(o: O): O;
+type MakeProxy<O extends object> = {
+  [Key in keyof O & string as SetterFnName<Key>]: O[Key] extends (
+    a: infer ARGUMENT
+  ) => void
+    ? (newValue: ARGUMENT) => boolean
+    : (newValue: O[Key]) => void;
+};
+
+declare function getName(): string;
+
+type GetNameReturn = ReturnType<typeof getName>;
+
+declare function createProxy<O extends object>(o: O): Flatten<MakeProxy<O>>;
 
 const person = {
   firstname: "Klaus",
   age: 32,
-  setLastname(_newLastname: string) {
+  setLastname(_newLastname: number | null | boolean) {
     // ...
   },
 };
+
+// type ToUpperCase<S extends string> = S extends "a" : "A" ? S extends "b"
+
+const setterFn = (n: string) => `set${n}`;
+
+type SetterFnName<N extends string> = N extends `set${string}`
+  ? N
+  : `set${Capitalize<N>}`;
+
+type Test = SetterFnName<"lastname">;
 
 const expectedPersonProxy = {
   setFirstname(newValue: string) {},
@@ -31,7 +54,6 @@ const expectedPersonProxy = {
 
 const result = createProxy(person);
 
-// der Typ folgende muss entstehen:
 type ExpectedPersonProxy = {
   setFirstname: (newValue: string) => void;
   setAge: (newValue: number) => void;

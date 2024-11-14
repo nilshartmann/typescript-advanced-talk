@@ -45,6 +45,8 @@ type ToObject<X extends string> = {
 
 type UrlObject<U extends string> = ToObject<ParsedUrl<U>[number]>;
 
+type B = UrlObject<"/api/v1/:userId/likes/:likeId">;
+
 type Z = ParsedUrl<typeof path>;
 //   ^?
 

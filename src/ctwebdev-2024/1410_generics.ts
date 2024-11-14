@@ -8,4 +8,10 @@ export default undefined;
 // Generic Types
 //  - Die Setter-Funktion als Typ
 
-declare function useState(): any;
+type SetterFn<VALUE> = (newValue: VALUE | null) => void;
+
+declare function useState<V>(value: V): SetterFn<V>;
+
+let x = useState("hello");
+let y = useState(123);
+let z = useState<string>(123);
